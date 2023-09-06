@@ -2,18 +2,18 @@ package tpo_ai_api.model;
 
 public class Unidad extends Instalacion {
     private EstadoUnidad estado;
-    private Usuario dueno;
-    private Usuario inquilino;
+    private int idDueno;
+    private int idInquilino;
 
     public Unidad() {
         super();
     }
 
-    public Unidad(int piso, int numero, EstadoUnidad estado, Usuario dueno, Usuario inquilino) {
+    public Unidad(int piso, int numero, EstadoUnidad estado, int idDueno, int idInquilino) {
         super(piso, numero);
         this.estado = estado;
-        this.dueno = dueno;
-        this.inquilino = inquilino;
+        this.idDueno = idDueno;
+        this.idInquilino = idInquilino;
     }
 
     public EstadoUnidad getEstado() {
@@ -24,19 +24,28 @@ public class Unidad extends Instalacion {
         this.estado = estado;
     }
 
-    public Usuario getDueno() {
-        return dueno;
+    public int getIdDueno() {
+        return idDueno;
     }
 
-    public void setDueno(Usuario dueno) {
-        this.dueno = dueno;
+    public void setIdDueno(int idDueno) {
+        this.idDueno = idDueno;
     }
 
-    public Usuario getInquilino() {
-        return inquilino;
+    public int getIdInquilino() {
+        return idInquilino;
     }
 
-    public void setInquilino(Usuario inquilino) {
-        this.inquilino = inquilino;
+    public void setIdInquilino(int idInquilino) {
+        this.idInquilino = idInquilino;
+    }
+
+    @Override
+    public String toString() {
+        return "Unidad{" +
+                "estado=" + estado +
+                ", idDueno=" + idDueno +
+                ", idInquilino=" + idInquilino +
+                '}';
     }
 }

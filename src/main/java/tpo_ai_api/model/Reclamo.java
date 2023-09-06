@@ -5,7 +5,8 @@ import java.util.Date;
 
 public class Reclamo {
     private int id;
-    private Instalacion instalacion;
+    private int idUsuario;
+    private int idInstalacion;
     private String descripcion;
     private ArrayList<Object> fotos;
     private EstadoReclamo estado;
@@ -16,21 +17,14 @@ public class Reclamo {
         super();
     }
 
-    public Reclamo(Instalacion instalacion, String descripcion, ArrayList<Object> fotos, EstadoReclamo estado, Date fechaCreacion, Date fechaModificacion) {
-        this.instalacion = instalacion;
+    public Reclamo(int idUsuario, int idInstalacion, String descripcion, ArrayList<Object> fotos, EstadoReclamo estado, Date fechaCreacion, Date fechaModificacion) {
+        this.idUsuario = idUsuario;
+        this.idInstalacion = idInstalacion;
         this.descripcion = descripcion;
         this.fotos = fotos;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
         this.fechaModificacion = fechaModificacion;
-    }
-
-    public Instalacion getInstalacion() {
-        return instalacion;
-    }
-
-    public void setInstalacion(Instalacion instalacion) {
-        this.instalacion = instalacion;
     }
 
     public String getDescripcion() {
@@ -77,7 +71,8 @@ public class Reclamo {
     public String toString() {
         return "Reclamo{" +
                 "id=" + id +
-                ", instalacion=" + instalacion +
+                ", idUsuario=" + idUsuario +
+                ", idInstalacion=" + idInstalacion +
                 ", descripcion='" + descripcion + '\'' +
                 ", fotos=" + fotos +
                 ", estado=" + estado +

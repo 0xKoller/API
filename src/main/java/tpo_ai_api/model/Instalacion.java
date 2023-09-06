@@ -1,6 +1,9 @@
 package tpo_ai_api.model;
 
+import javax.persistence.*;
+@MappedSuperclass
 public abstract class Instalacion {
+
     private int id;
     private int piso;
     private int numero;

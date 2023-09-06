@@ -4,24 +4,23 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "edificio_tabla")
+@Table(name = "Edificio")
 public class Edificio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "nombre_col", nullable = false, length = 50)
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
+    @Embedded
     private Direccion direccion;
-    private ArrayList<Instalacion> instalaciones;
 
     public Edificio(){
         super();
     }
-    public Edificio(String nombre, Direccion direccion, ArrayList<Instalacion> instalaciones) {
+    public Edificio(String nombre, Direccion direccion) {
         super();
         this.nombre = nombre;
         this.direccion = direccion;
-        this.instalaciones = instalaciones;
     }
 
     public int getId() {
@@ -48,21 +47,12 @@ public class Edificio {
         this.direccion = direccion;
     }
 
-    public ArrayList<Instalacion> getInstalaciones() {
-        return instalaciones;
-    }
-
-    public void setInstalaciones(ArrayList<Instalacion> instalaciones) {
-        this.instalaciones = instalaciones;
-    }
-
     @Override
     public String toString() {
         return "Edificio{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", direccion=" + direccion +
-                ", instalaciones=" + instalaciones +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package tpo_ai_api.model;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Table;
 
 @Embeddable
 public class Direccion {

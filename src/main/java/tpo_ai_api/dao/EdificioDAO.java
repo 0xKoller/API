@@ -70,7 +70,7 @@ public class EdificioDAO {
 		Edificio edificiosave = toEntity(edificio);
 		
 		Configuration conf = new Configuration().configure();
-		//conf.addAnnotatedClass(Estudiante.class);
+		
 		SessionFactory sf = conf.buildSessionFactory();
 		Session session = sf.openSession();
 

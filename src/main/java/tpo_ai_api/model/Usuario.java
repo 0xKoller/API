@@ -1,8 +1,13 @@
 package tpo_ai_api.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
+@Entity
+@Table(name = "Usuario")
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String usuario;
     private String contrasena;

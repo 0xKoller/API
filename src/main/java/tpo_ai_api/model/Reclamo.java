@@ -1,9 +1,14 @@
 package tpo_ai_api.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+@Entity
+@Table(name = "Reclamo")
 public class Reclamo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int idUsuario;
     private int idInstalacion;

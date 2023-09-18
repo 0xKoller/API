@@ -20,6 +20,7 @@ public class App {
         session.save(edificio);
         tx.commit();
 
+
         session.beginTransaction();
         Edificio res = session.get(Edificio.class, 1);
         session.getTransaction().commit();

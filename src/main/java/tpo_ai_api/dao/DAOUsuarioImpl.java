@@ -10,8 +10,8 @@ import org.hibernate.query.Query;
 
 import tpo_ai_api.model.Usuario;
 
-public class DAOUsuarioImpl {
-	
+public class DAOUsuarioImpl implements DAOUsuario {
+
 private static DAOUsuarioImpl instancia;
 	
 	public static DAOUsuarioImpl getInstancia() {
@@ -20,12 +20,14 @@ private static DAOUsuarioImpl instancia;
 		return instancia;
 	}
 	
-	public List<Usuario> getUsuarios(){
+	
+
+	public List<Usuario> getUsuarios(Session session){
 		
-		Configuration conf = new Configuration().configure();
-        conf.addAnnotatedClass(Usuario.class);
-        SessionFactory sf = conf.buildSessionFactory();
-        Session session = sf.openSession();
+		//Configuration conf = new Configuration().configure();
+        //conf.addAnnotatedClass(Usuario.class);
+        //SessionFactory sf = conf.buildSessionFactory();
+        //Session session = sf.openSession();
         
 
 		
@@ -36,11 +38,11 @@ private static DAOUsuarioImpl instancia;
 	}
 	
 	
-	public Usuario findById(int id) throws Exception{
-		Configuration conf = new Configuration().configure();
+	public Usuario findById(int id,Session session) throws Exception{
+		/*Configuration conf = new Configuration().configure();
         conf.addAnnotatedClass(Usuario.class);
         SessionFactory sf = conf.buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = sf.openSession();*/
         
 
 		
@@ -51,11 +53,11 @@ private static DAOUsuarioImpl instancia;
 				return usuario;
 	}
 	
-	public Usuario findByDni(String dni) throws Exception{
-		Configuration conf = new Configuration().configure();
+	public Usuario findByDni(String dni,Session session) throws Exception{
+		/*Configuration conf = new Configuration().configure();
         conf.addAnnotatedClass(Usuario.class);
         SessionFactory sf = conf.buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = sf.openSession();*/
         
 		Query<Usuario> getQuery = session.createQuery("FROM Usuario where dni=?", Usuario.class);
 		Usuario usuario = getQuery.getSingleResult();
@@ -64,11 +66,11 @@ private static DAOUsuarioImpl instancia;
 				return toNegocio(usuario);
 	}
 
-	public Usuario findByUsuario(String usuario1) throws Exception{
-		Configuration conf = new Configuration().configure();
+	public Usuario findByUsuario(String usuario1,Session session) throws Exception{
+		/*Configuration conf = new Configuration().configure();
         conf.addAnnotatedClass(Usuario.class);
         SessionFactory sf = conf.buildSessionFactory();
-        Session session = sf.openSession();
+        Session session = sf.openSession();*/
         
 		Query<Usuario> getQuery = session.createQuery("FROM Usuario where usuario=?", Usuario.class);
 		Usuario usuario = getQuery.getSingleResult();
@@ -78,27 +80,28 @@ private static DAOUsuarioImpl instancia;
 	}
 
 	
-	public void save(Usuario usuario){
+	public void save(Usuario usuario, Session session){
 	Usuario usuariosave = toEntity(usuario);
 		
-		Configuration conf = new Configuration().configure();
+		//Configuration conf = new Configuration().configure();
 		//conf.addAnnotatedClass(Estudiante.class);
-		SessionFactory sf = conf.buildSessionFactory();
-		Session session = sf.openSession();
+		//SessionFactory sf = conf.buildSessionFactory();
+		//Session session = sf.openSession();	
 
 		Transaction tx = session.beginTransaction();
 		session.save(usuariosave);
 		tx.commit();
+		
 	}
 	
-	public void update(Usuario usuario){
+	public void update(Usuario usuario,Session session){
 
 Usuario usuariosave = toEntity(usuario);
 		
-		Configuration conf = new Configuration().configure();
+		/*Configuration conf = new Configuration().configure();
 		//conf.addAnnotatedClass(Estudiante.class);
 		SessionFactory sf = conf.buildSessionFactory();
-		Session session = sf.openSession();
+		Session session = sf.openSession();*/
 
 		Transaction tx = session.beginTransaction();
 		session.update(usuariosave);
@@ -113,8 +116,8 @@ Usuario usuariosave = toEntity(usuario);
 		return new Usuario (entity.getUsuario(),entity.getContrasena(),entity.getDni(),entity.getTelefono(),entity.getEmail(),entity.isAdmin(),entity.getReclamos(),entity.getEdificios());
 	}
 
-	public void delete(Usuario usuario) throws Exception {
-		List<Usuario> usuarios = DAOUsuarioImpl.getInstancia().getUsuarios();
+	public void delete(Usuario usuario,Session session) throws Exception {
+		List<Usuario> usuarios = DAOUsuarioImpl.getInstancia().getUsuarios(session);
 		
 		boolean bandera=false;
 		
@@ -128,10 +131,10 @@ Usuario usuariosave = toEntity(usuario);
 			
 			
 			Usuario usuariodel = toEntity(usuario);
-			Configuration conf = new Configuration().configure();
+			//Configuration conf = new Configuration().configure();
 			//conf.addAnnotatedClass(Estudiante.class);
-			SessionFactory sf = conf.buildSessionFactory();
-			Session session = sf.openSession();
+			//SessionFactory sf = conf.buildSessionFactory();
+			//Session session = sf.openSession();
 
 			Transaction tx = session.beginTransaction();
 			session.update(usuariodel);
@@ -142,6 +145,10 @@ Usuario usuariosave = toEntity(usuario);
 			throw new Exception("No se puede eliminar al usuario");
 		}
 	}
+
+
+
+	
 }
 
 

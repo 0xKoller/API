@@ -1,6 +1,19 @@
 package tpo_ai_api.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Unidad")
 public class Unidad extends Instalacion {
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 private int id;
+	 @Column(name = "estado", nullable = false, length = 50)
     private EstadoUnidad estado;
     private int idDueno;
     private int idInquilino;

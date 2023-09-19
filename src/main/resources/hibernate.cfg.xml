@@ -12,6 +12,8 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.show_sql">true</property>
         <mapping class="tpo_ai_api.model.Usuario"/>
-        <mapping class="tpo_ai_api.model.Edificio"/>    
+        <mapping class="tpo_ai_api.model.Edificio"/>
+        <mapping class="tpo_ai_api.model.Unidad"/>
+        <mapping class="tpo_ai_api.model.EstadoUnidad"/>    
     </session-factory>
 </hibernate-configuration>

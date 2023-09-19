@@ -10,9 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Unidad")
 public class Unidad extends Instalacion {
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private int id;
+	
 	 @Column(name = "estado", nullable = false, length = 50)
     private EstadoUnidad estado;
     private int idDueno;

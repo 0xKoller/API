@@ -3,7 +3,8 @@ package tpo_ai_api.model;
 import javax.persistence.*;
 @MappedSuperclass
 public abstract class Instalacion {
-
+	@Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int piso;
     private int numero;

@@ -27,7 +27,7 @@ public class DAOUnidadImpl implements DAOUnidad {
         
 
 		
-		Query<Unidad> getQuery = session.createQuery("FROM Unidad ORDER BY unidad", Unidad.class);
+		Query<Unidad> getQuery = session.createQuery("FROM Unidad ORDER BY id", Unidad.class);
 		List<Unidad> unidades = getQuery.getResultList();
 		return unidades;
 	}

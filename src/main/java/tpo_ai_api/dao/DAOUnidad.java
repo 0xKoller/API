@@ -13,6 +13,6 @@ public interface DAOUnidad {
 	List<Unidad> getUnidades(Session session) throws Exception;
 	Unidad findById(int numero,Session session) throws Exception;
 	void save(Unidad unidad,Session session) throws Exception;
-	void update(Unidad Unidad, Session session) throws Exception;
+	void update(Unidad unidad, Session session) throws Exception;
 	
 }
